@@ -2,13 +2,12 @@ import serpapi
 from dotenv import load_dotenv
 import os
 load_dotenv()
-from serpapi import GoogleSearch
 from langchain_core.tools import tool
 import trafilatura
 api_key = os.getenv("SERP_API_KEY")
+
 @tool
 def search_google(query: str) -> str:
-
     """Search Google in real time for up-to-date information, news, facts, or recent events.
 
     Use this tool when:
@@ -30,22 +29,24 @@ def search_google(query: str) -> str:
         "api_key": api_key,
         "num": 5
     }
-    search = GoogleSearch(params)
-    results = search.get_dict()
-  
-    essential = []
+    
+    try:
+        search = serpapi.search(params)
+        results = search.as_dict()
+    
+        essential = []
 
-    for r in results.get("organic_results", [])[0]:
-        title = r.get("title", "")
-        snippet = r.get("snippet", "")
-        link = r.get("link", "")
-        content=trafilatura.fetch_and_parse(url=link)
+        for r in results.get("organic_results", []):
+            title = r.get("title", "")
+            snippet = r.get("snippet", "")
+            link = r.get("link", "")
+            
+            essential.append(
+                f"{title}\n{snippet}\n{link}"
+            )
 
-
-        essential.append(
-            f"{title}\n{snippet}\n{link}"
-        )
-
-    return "\n\n\n".join(essential)
-
-print(search_google.invoke({"query": "Barca last match score"}))
+        return "\n\n".join(essential)
+    
+    except Exception as e:
+        return f"Error during Google search: {str(e)}"
+print(search_google.invoke("What is the weather in New York?"))

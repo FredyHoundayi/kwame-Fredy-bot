@@ -3,6 +3,7 @@ import os
 import logging
 from dotenv import load_dotenv
 import chainlit as cl
+from tools import google_search_tool
 
 # Configuration du logging
 logging.basicConfig(level=logging.INFO)
@@ -19,7 +20,7 @@ try:
     
     # Import des outils
     from tools.get_weather_tool import get_weather
-    from tools.tavily_tool import tav_search
+    from tools.google_search_tool import search_google
     from tools.article_retriever import online_article_retriever
     from tools.files_reader import read_pdf
     
@@ -34,8 +35,9 @@ try:
     GROQ_API_KEY = os.getenv("GROQ_API_KEY")
     TAVILY_API_KEY = os.getenv("TAVILY_API_KEY")
     GETWEATHER_API_KEY = os.getenv("GETWEATHER_API_KEY")
+    SERP_API_KEY = os.getenv("SERP_API_KEY")
     
-    if not all([GROQ_API_KEY, TAVILY_API_KEY, GETWEATHER_API_KEY]):
+    if not all([GROQ_API_KEY, TAVILY_API_KEY, GETWEATHER_API_KEY, SERP_API_KEY]):
         raise ValueError("Une ou plusieurs clés API manquantes dans le fichier .env")
         
     logger.info("Variables d'environnement chargées avec succès")
@@ -72,7 +74,7 @@ except Exception as e:
 
 # ⚡ Tools
 try:
-    tools = [get_weather, tav_search,online_article_retriever,read_pdf]
+    tools = [get_weather, search_google,online_article_retriever,read_pdf]
     logger.info("Outils chargés avec succès")
 except Exception as e:
     logger.error(f"Erreur lors du chargement des outils : {e}")
@@ -83,7 +85,7 @@ system_prompt = """Act Kwame Fredy Bot,a helpful personnal assistant of Fredy
     Use the tools at your disposal to perform tasks as needed.
         -get_weather: search real time weather related information  based on location ,like time ,date....
         
-        -tav_search: Use tavily search when search_google can't provide correct answers or info
+        -search_google: Use google search when search_google can't provide correct answers or info
 
         -online_article_retriever: Retrieve and parse the content of an online article given its URL .Whe the user input add a url in his question use this tool to extract the content of the article and use it to answer the question
         -read_pdf: Read the content of a PDF file and return it as a string. When the user input add a pdf file in his question use this tool to extract the content of the pdf file and use it to answer the question
