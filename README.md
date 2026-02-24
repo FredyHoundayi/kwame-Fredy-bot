@@ -7,6 +7,7 @@ sdk: docker
 pinned: false
 license: mit
 app_port: 7860
+short_description: Personnal AI assistant bot
 ---
 
 # Kwame Fredy Bot
