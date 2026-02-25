@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: Kwame Fredy Bot
 emoji: 🤖
@@ -9,6 +10,8 @@ license: mit
 app_port: 7860
 short_description: Personal AI assistant with web search and document analysis
 ---
+=======
+>>>>>>> 93950817c04823890ebb69d631bbdf19b522c613
 
 # 🤖 Kwame Fredy Bot
 

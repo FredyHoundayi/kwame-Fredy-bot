@@ -1,9 +1,10 @@
 import serpapi
 from dotenv import load_dotenv
 import os
-load_dotenv()
 from langchain_core.tools import tool
 import trafilatura
+
+load_dotenv()
 api_key = os.getenv("SERP_API_KEY")
 
 @tool
@@ -49,4 +50,3 @@ def search_google(query: str) -> str:
     
     except Exception as e:
         return f"Error during Google search: {str(e)}"
-print(search_google.invoke("What is the weather in New York?"))
