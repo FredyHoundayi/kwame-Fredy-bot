@@ -1,14 +1,3 @@
----
-title: Kwame Fredy Bot
-emoji: 🤖
-colorFrom: blue
-colorTo: purple
-sdk: docker
-pinned: false
-license: mit
-app_port: 7860
-short_description: Personal AI assistant with web search and document analysis
----
 
 # 🤖 Kwame Fredy Bot
 
