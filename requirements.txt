@@ -6,7 +6,7 @@ langchain-community==0.3.3
 langchain==0.3.7
 requests==2.32.3
 tavily-python==0.5.0
-langchain-tavily==0.1.4
+langchain-tavily==0.1.6
 python-weather==2.0.4
 PyPDF2==3.0.1
 langgraph==0.2.16

@@ -1,0 +1,21 @@
+services:
+  # Web Service
+  - type: web
+    name: kwame-fredy-bot
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: SERP_API_KEY
+        sync: false
+      - key: TAVILY_API_KEY
+        sync: false
+      - key: GETWEATHER_API_KEY
+        sync: false
+    autoDeploy: true
+    domains:
+      - kwame-fredy-bot.onrender.com
