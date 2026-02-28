@@ -31,14 +31,11 @@ venv.bak/
 
 # Environment variables
 .env
-<<<<<<< HEAD
 .env.*
-=======
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
->>>>>>> 93950817c04823890ebb69d631bbdf19b522c613
 
 # IDE
 .vscode/
@@ -70,21 +67,9 @@ logs/
 temp/
 tmp/
 
-<<<<<<< HEAD
-# Binary files for Hugging Face
-*.png
-*.jpg
-*.jpeg
-*.gif
-*.pdf
-rag_db/
-tmp/
-
-=======
->>>>>>> 93950817c04823890ebb69d631bbdf19b522c613
-# Assets (if not needed in production)
+# Assets (keep public for logo/avatar)
 assets/
-public/
+# public/  # Commented out - we need public folder for logo/avatar
 
 # Docker
 # .dockerignore
