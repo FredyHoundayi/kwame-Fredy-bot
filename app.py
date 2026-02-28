@@ -36,14 +36,9 @@ try:
     GROQ_API_KEY = os.getenv("GROQ_API_KEY")
     TAVILY_API_KEY = os.getenv("TAVILY_API_KEY")
     GETWEATHER_API_KEY = os.getenv("GETWEATHER_API_KEY")
-<<<<<<< HEAD
     SERP_API_KEY = os.getenv("SERP_API_KEY")
     
     if not all([GROQ_API_KEY, TAVILY_API_KEY, GETWEATHER_API_KEY, SERP_API_KEY]):
-=======
-    
-    if not all([GROQ_API_KEY, TAVILY_API_KEY, GETWEATHER_API_KEY]):
->>>>>>> 93950817c04823890ebb69d631bbdf19b522c613
         raise ValueError("Une ou plusieurs clés API manquantes dans le fichier .env")
         
     logger.info("Variables d'environnement chargées avec succès")
@@ -52,20 +47,20 @@ except Exception as e:
     logger.error(f"Erreur lors du chargement des variables d'environnement : {e}")
     raise
 
-# ⚡ Setup LLM
+# ⚡ Initialize Groq LLM
 try:
     groq_chat = ChatGroq(
         api_key=GROQ_API_KEY,
         model="llama-3.3-70b-versatile",
-        temperature=0,
-        disable_streaming=True  # retour au mode stable sans streaming
+        temperature=0.7,
+        disable_streaming=True
     )
     logger.info("Modèle Groq initialisé avec succès")
 except Exception as e:
     logger.error(f"Erreur lors de l'initialisation du modèle Groq : {e}")
     raise
 
-# ⚡ Setup prompt template
+# ⚡ Initialize prompt template
 try:
     template = ChatPromptTemplate.from_messages([
         ("system", "You are a helpful interactive personal assistant."),
