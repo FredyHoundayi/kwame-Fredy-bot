@@ -1,18 +1,3 @@
-<<<<<<< HEAD
----
-title: Kwame Fredy Bot
-emoji: 🤖
-colorFrom: blue
-colorTo: purple
-sdk: docker
-pinned: false
-license: mit
-app_port: 7860
-short_description: Personal AI assistant with web search and document analysis
----
-=======
->>>>>>> 93950817c04823890ebb69d631bbdf19b522c613
-
 # 🤖 Kwame Fredy Bot
 
 **Your personal intelligent assistant with web search and document analysis capabilities**
@@ -20,6 +5,9 @@ short_description: Personal AI assistant with web search and document analysis
 ## 🌐 Deployment
 
 ✅ **Deployed and available at:**  
+👉 [https://kwame-fredy-bot.onrender.com](https://kwame-fredy-bot.onrender.com)
+
+🚀 **Also available on Hugging Face Spaces:**  
 👉 [https://huggingface.co/spaces/FredyHoundayi/Kwame-Fredy-AI](https://huggingface.co/spaces/FredyHoundayi/Kwame-Fredy-AI)
 
 ## ⭐ Features
@@ -28,25 +16,27 @@ short_description: Personal AI assistant with web search and document analysis
 - 🔍 **Real-time Google search** for updated information
 - 🌤️ **Accurate weather information** by location
 - 📄 **PDF document analysis** with content extraction
-- 📰 **Web article extraction** from URLs
-- 📊 **Modern interface** with Chainlit
+- 📰 **Online article retrieval** and summarization
+- 🎯 **Context-aware responses** with tool integration
 
 ## 🛠️ Technologies Used
 
-- **[Chainlit](https://chainlit.io/)** - Modern and responsive chat interface
-- **[LangChain](https://python.langchain.com/)** - Powerful LLM framework
-- **[Groq](https://groq.com/)** - Ultra-fast LLM API (Llama 3.3 70B)
-- **[SerpApi](https://serpapi.com/)** - Professional Google search
-- **[Tavily](https://tavily.com/)** - Alternative web search
-- **[PyPDF2](https://pypdf2.readthedocs.io/)** - PDF document processing
+- **[Chainlit](https://docs.chainlit.io)** - Modern chat interface
+- **[LangChain](https://python.langchain.com)** - AI agent orchestration
+- **[Groq](https://groq.com)** - Fast LLM inference
+- **[Google Search API](https://serpapi.com/)** - Real-time web search
+- **[WeatherAPI](https://www.weatherapi.com/)** - Weather data
+- **[Trafilatura](https://trafilatura.readthedocs.io)** - Web content extraction
+- **[PyPDF2](https://pypdf2.readthedocs.io/)** - PDF processing
 
-## 🚀 How to Use
+## 🚀 Quick Start
 
-### 1. **Web Interface** (Recommended)
-Visit the deployed application directly:  
-[https://huggingface.co/spaces/FredyHoundayi/Kwame-Fredy-AI](https://huggingface.co/spaces/FredyHoundayi/Kwame-Fredy-AI)
+### Web Usage
+1. Visit [https://kwame-fredy-bot.onrender.com](https://kwame-fredy-bot.onrender.com)
+2. Start chatting with Kwame Fredy Bot
+3. Upload PDF files or share URLs for analysis
 
-### 2. **Local Installation**
+### Local Development
 ```bash
 # Clone the repository
 git clone https://github.com/FredyHoundayi/kwame-Fredy-bot.git
@@ -54,8 +44,7 @@ cd kwame-Fredy-bot
 
 # Create virtual environment
 python -m venv venv
-source venv/bin/activate  # Linux/Mac
-# or venv\Scripts\activate  # Windows
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 # Install dependencies
 pip install -r requirements.txt
@@ -73,42 +62,42 @@ chainlit run app.py
 Create a `.env` file with the following keys:
 
 ```env
-GROQ_API_KEY=your_groq_key
-SERP_API_KEY=your_serpapi_key
-TAVILY_API_KEY=your_tavily_key
-GETWEATHER_API_KEY=your_weather_key
+# Required API Keys
+GROQ_API_KEY=your_groq_api_key_here
+SERP_API_KEY=your_google_search_api_key_here
+GETWEATHER_API_KEY=your_weather_api_key_here
 ```
 
 ### Getting API Keys
-- **Groq** : [console.groq.com](https://console.groq.com/)
-- **SerpApi** : [serpapi.com](https://serpapi.com/)
-- **Tavily** : [tavily.com](https://tavily.com/)
-- **WeatherAPI** : [weatherapi.com](https://www.weatherapi.com/)
 
-## 📖 Usage Examples
+1. **Groq API Key**: [Get from Groq Console](https://console.groq.com/)
+2. **Google Search API Key**: [Get from SerpApi](https://serpapi.com/)
+3. **Weather API Key**: [Get from WeatherAPI](https://www.weatherapi.com/)
 
-### 💬 Simple Conversation
-```
-User: Hi, how are you?
-Bot: Hello! I'm Kwame Fredy Bot, your personal assistant. I'm doing great, thank you! How can I help you today?
-```
+## 💡 Usage Examples
 
-### 🔍 Information Search
-```
-User: What are the latest news about AI?
-Bot: [Uses Google Search to provide updated information]
-```
-
-### 📄 Document Analysis
-```
-User: [Upload PDF] Can you summarize this document?
-Bot: [Reads and analyzes the PDF to provide a detailed summary]
-```
-
-### 🌤️ Weather Information
+### Weather Information
 ```
 User: What's the weather like in Paris?
-Bot: [Provides current weather information for Paris]
+Bot: [Provides current weather conditions for Paris]
+```
+
+### Web Search
+```
+User: What are the latest developments in AI?
+Bot: [Searches and provides recent AI news and updates]
+```
+
+### PDF Analysis
+```
+User: [Uploads PDF document] Can you summarize this report?
+Bot: [Analyzes PDF content and provides summary]
+```
+
+### Article Retrieval
+```
+User: Can you analyze this article? https://example.com/article
+Bot: [Extracts and analyzes the article content]
 ```
 
 ## 🏗️ Project Architecture
@@ -116,66 +105,62 @@ Bot: [Provides current weather information for Paris]
 ```
 kwame-Fredy-bot/
 ├── app.py                 # Main Chainlit application
-├── assistant.py           # Alternative LangChain configuration
-├── tools/                 # Specialized tools
-│   ├── google_search_tool.py
+├── tools/                 # Agent tools directory
 │   ├── get_weather_tool.py
-│   ├── tavily_tool.py
+│   ├── google_search_tool.py
 │   ├── article_retriever.py
 │   └── files_reader.py
-├── .chainlit/            # Chainlit configuration
+├── public/               # Static assets (logo, avatar)
 ├── requirements.txt      # Python dependencies
-├── Dockerfile           # Docker configuration
-├── fly.toml             # Fly.io configuration
-└── README.md            # Documentation
+├── Dockerfile           # Container configuration
+├── render.yaml          # Render.com deployment config
+└── .env.example        # Environment variables template
 ```
 
 ## 🐳 Docker Deployment
 
+### Render.com
+The application is automatically deployed on Render.com with:
+- **URL**: https://kwame-fredy-bot.onrender.com
+- **Free tier** with automatic scaling
+- **HTTPS** enabled by default
+
 ### Hugging Face Spaces
-```bash
-# Push to Hugging Face
-git push space main
-```
+Alternative deployment on Hugging Face Spaces:
+- **URL**: https://huggingface.co/spaces/FredyHoundayi/Kwame-Fredy-AI
+- **GPU support** available
+- **Community integration**
 
-### Fly.io
-```bash
-# Deploy to Fly.io
-fly deploy
-```
-
-### Local Docker
+### Manual Docker Build
 ```bash
 # Build the image
 docker build -t kwame-fredy-bot .
 
 # Run the container
-docker run -p 8000:8000 kwame-fredy-bot
+docker run -p 7860:7860 --env-file .env kwame-fredy-bot
 ```
 
 ## 🤝 Contributing
 
-Contributions are welcome! Feel free to:
-
-1. Fork the project
-2. Create a branch (`git checkout -b feature/new-feature`)
-3. Commit your changes (`git commit -am 'Add a new feature'`)
-4. Push to the branch (`git push origin feature/new-feature`)
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
 ## 📝 License
 
-This project is licensed under the **MIT** License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
-- **Chainlit** for the amazing chat interface
-- **Groq** for the ultra-fast LLM API
-- **LangChain** for the powerful framework
-- **Hugging Face** for free hosting
+- **[Groq](https://groq.com/)** for fast LLM inference
+- **[LangChain](https://python.langchain.com/)** for agent framework
+- **[Chainlit](https://docs.chainlit.io/)** for chat interface
+- **[Render.com](https://render.com/)** for hosting services
 
 ---
 
-**Developed with ❤️ by [Fredy Houndayi](https://github.com/FredyHoundayi)**
+**Made with ❤️ by Fredy Houndayi**
 
-🌟 **Don't forget to give the project a star if you like it!**
+*Your intelligent AI companion for web search, document analysis, and more!*
