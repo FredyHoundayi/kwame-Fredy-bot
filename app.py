@@ -13,6 +13,11 @@ logger = logging.getLogger(__name__)
 @cl.on_chat_start
 async def on_chat_start():
     # Configuration du bot avec logo et avatar
+    await cl.Avatar(
+        name="Kwame Fredy Bot",
+        url="/public/logo.png"
+    ).send()
+    
     await cl.Message(
         content="👋 Bonjour ! Je suis Kwame Fredy Bot, votre assistant personnel intelligent. Comment puis-je vous aider aujourd'hui ?"
     ).send()
