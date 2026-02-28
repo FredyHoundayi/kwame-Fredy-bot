@@ -147,13 +147,13 @@ alert_style = "classic"
 # custom_meta_url = "https://github.com/FredyHoundayi/kwame-Fredy-bot"
 
 # Specify a custom meta image url.
-# custom_meta_image_url = "https://chainlit-cloud.s3.eu-west-3.amazonaws.com/logo/chainlit_banner.png"
+custom_meta_image_url = "https://github.com/FredyHoundayi/kwame-Fredy-bot/blob/main/public/logo.png"
 
 # Load assistant logo directly from URL.
-logo = "public/logo.png"
+logo = "https://github.com/FredyHoundayi/kwame-Fredy-bot/blob/main/public/logo.png"
 
 # Load assistant avatar image directly from URL.
-default_avatar = "public/logo.png"
+default_avatar = "https://github.com/FredyHoundayi/kwame-Fredy-bot/blob/main/public/logo.png"
 
 # Specify a custom build directory for the frontend.
 # This can be used to customize the frontend code.
@@ -164,7 +164,7 @@ default_avatar = "public/logo.png"
 # [[UI.header_links]]
 #     name = "Issues"
 #     display_name = "Report Issue"
-#     icon_url = "https://github.com/FredyHoundayi/kwame-Fredy-bot/blob/main/Gemini_Generated_Image_op730mop730mop73.png"
+#     icon_url = "https://github.com/FredyHoundayi/kwame-Fredy-bot/blob/main/public/logo.png"
 #     url = "https://github.com/Chainlit/chainlit/issues"
 #     target = "_blank" (default)  # Optional: "_self", "_parent", "_top".
 
