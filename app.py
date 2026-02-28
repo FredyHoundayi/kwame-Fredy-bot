@@ -1,6 +1,7 @@
 # app.py
 import os
 import logging
+import base64
 from dotenv import load_dotenv
 import chainlit as cl
 from tools import google_search_tool
@@ -12,11 +13,21 @@ logger = logging.getLogger(__name__)
 # Configuration Chainlit pour les assets
 @cl.on_chat_start
 async def on_chat_start():
+    # Lire le logo et le convertir en base64
+    try:
+        with open("public/logo.png", "rb") as image_file:
+            encoded_string = base64.b64encode(image_file.read()).decode()
+            avatar_url = f"data:image/png;base64,{encoded_string}"
+    except Exception as e:
+        logger.error(f"Erreur lors du chargement du logo: {e}")
+        avatar_url = None
+    
     # Configuration du bot avec logo et avatar
-    await cl.Avatar(
-        name="Kwame Fredy Bot",
-        url="/public/logo.png"
-    ).send()
+    if avatar_url:
+        await cl.Avatar(
+            name="Kwame Fredy Bot",
+            url=avatar_url
+        ).send()
     
     await cl.Message(
         content="👋 Bonjour ! Je suis Kwame Fredy Bot, votre assistant personnel intelligent. Comment puis-je vous aider aujourd'hui ?"
