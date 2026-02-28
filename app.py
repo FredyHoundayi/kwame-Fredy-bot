@@ -98,6 +98,7 @@ try:
         prompt=ChatPromptTemplate.from_messages([
             ("system", system_prompt),
             ("placeholder", "{messages}"),
+            ("placeholder", "{agent_scratchpad}"),
         ])
     )
     agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
