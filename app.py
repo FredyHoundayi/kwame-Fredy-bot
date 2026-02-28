@@ -9,6 +9,14 @@ from tools import google_search_tool
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+# Configuration Chainlit pour les assets
+@cl.on_chat_start
+async def on_chat_start():
+    # Configuration du bot avec logo et avatar
+    await cl.Message(
+        content="👋 Bonjour ! Je suis Kwame Fredy Bot, votre assistant personnel intelligent. Comment puis-je vous aider aujourd'hui ?"
+    ).send()
+
 # LangChain / Groq imports
 try:
     from langchain_groq import ChatGroq
