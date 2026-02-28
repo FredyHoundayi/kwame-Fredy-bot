@@ -9,7 +9,8 @@ load_dotenv()
 @tool
 def get_weather(query: str) -> str:
     """Search weatherapi to get the current weather"""
-    endpoint = f"http://api.weatherapi.com/v1/current.json?key={os.getenv("GETWEATHER_API_KEY")}&q={query}"
+    api_key = os.getenv("GETWEATHER_API_KEY")
+    endpoint = f"http://api.weatherapi.com/v1/current.json?key={api_key}&q={query}"
     response = requests.get(endpoint)
     data = response.json()
 
