@@ -1,15 +1,13 @@
-from langchain_tavily import TavilySearch
 from dotenv import load_dotenv
 import os
 from langchain_core.tools import tool
 import requests
 import trafilatura
-from langchain_core.tools import tool
 load_dotenv()
 
 
 @tool
-def  online_article_retriever(url: str) -> str:
+def online_article_retriever(url: str) -> str:
     """
     Retrieve and parse the content of an online article given its URL.
 
