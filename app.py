@@ -16,12 +16,10 @@ try:
     from langchain_core.output_parsers import StrOutputParser
     from langchain_core.tools import tool
     from langchain.agents import AgentExecutor, create_tool_calling_agent
-    from assistant import print_stream
     
-    # Import des outils
+    # Import des outils (sans Tavily)
     from tools.get_weather_tool import get_weather
     from tools.google_search_tool import search_google
-    from tools.tavily_tool import tav_search
     from tools.article_retriever import online_article_retriever
     from tools.files_reader import read_pdf
     
@@ -34,11 +32,10 @@ except ImportError as e:
 try:
     load_dotenv()
     GROQ_API_KEY = os.getenv("GROQ_API_KEY")
-    TAVILY_API_KEY = os.getenv("TAVILY_API_KEY")
     GETWEATHER_API_KEY = os.getenv("GETWEATHER_API_KEY")
     SERP_API_KEY = os.getenv("SERP_API_KEY")
     
-    if not all([GROQ_API_KEY, TAVILY_API_KEY, GETWEATHER_API_KEY, SERP_API_KEY]):
+    if not all([GROQ_API_KEY, GETWEATHER_API_KEY, SERP_API_KEY]):
         raise ValueError("Une ou plusieurs clés API manquantes dans le fichier .env")
         
     logger.info("Variables d'environnement chargées avec succès")
@@ -73,20 +70,19 @@ except Exception as e:
     logger.error(f"Erreur lors de l'initialisation du modèle de prompt : {e}")
     raise
 
-# ⚡ Tools
+# ⚡ Tools (sans Tavily)
 try:
-    tools = [get_weather, search_google, tav_search, online_article_retriever, read_pdf]
+    tools = [get_weather, search_google, online_article_retriever, read_pdf]
     logger.info("Outils chargés avec succès")
 except Exception as e:
     logger.error(f"Erreur lors du chargement des outils : {e}")
     raise
 
-# ⚡ System prompt
+# ⚡ System prompt (sans Tavily)
 system_prompt = """Act Kwame Fredy Bot,a helpful personnal assistant of Fredy
     Use the tools at your disposal to perform tasks as needed.
         -get_weather: search real time weather related information  based on location ,like time ,date....
         -search_google: Use google search when you need real-time information
-        -tav_search: Use tavily search when you need alternative search results
         -online_article_retriever: Retrieve and parse the content of an online article given its URL .Whe the user input add a url in his question use this tool to extract the content of the article and use it to answer the question
         -read_pdf: Read the content of a PDF file and return it as a string. When the user input add a pdf file in his question use this tool to extract the content of the pdf file and use it to answer the question
         -    Use the tools only if you don't know the answer.
