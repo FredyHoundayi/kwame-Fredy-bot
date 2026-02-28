@@ -22,7 +22,7 @@ def online_article_retriever(url: str) -> str:
     Output:
         The parsed content of the online article as a string."""
     try:
-        response = requests.get(url)
+        response = requests.get(url, timeout=10)
         response.raise_for_status()  # Check if the request was successful
         content = trafilatura.extract(response.text)
         
